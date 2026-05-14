@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>สำนักช่างสุขาภิบาล — ระบบตรวจวัดการสั่นสะเทือน</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+    <!-- ============ Sidebar ============ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="seal" aria-hidden="true">
+                <svg viewBox="0 0 88 88" width="80" height="80">
+                    <defs>
+                        <radialGradient id="sealBg" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#7cc0ee"/>
+                            <stop offset="100%" stop-color="#3a7fb8"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="44" cy="44" r="42" fill="url(#sealBg)" stroke="#1f4e79" stroke-width="2.4"/>
+                    <circle cx="44" cy="44" r="34" fill="#fff5cc"/>
+                    <!-- Stylised "city" line motif inside the seal -->
+                    <g stroke="#1f4e79" stroke-width="1.4" fill="none" stroke-linecap="round">
+                        <path d="M26 50 L34 38 L42 46 L50 32 L58 46 L62 50"/>
+                        <path d="M22 56 L66 56"/>
+                        <path d="M30 56 L30 50 M38 56 L38 44 M46 56 L46 40 M54 56 L54 44 M60 56 L60 50"/>
+                    </g>
+                    <text x="44" y="68" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1f4e79" font-family="IBM Plex Sans Thai">เมืองพัทยา</text>
+                </svg>
+            </div>
+            <h1 class="brand-name">สำนักช่างสุขาภิบาล</h1>
+            <div class="brand-sub">Division of Sanitary works</div>
+        </div>
+
+        <button class="collapse-btn" aria-label="ย่อแถบเมนู" id="btn-collapse">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <nav class="nav">
+            <a class="nav-item" href="#" data-nav="home">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                <span class="nav-label">หน้าหลัก</span>
+                <span class="nav-ext">↗</span>
+            </a>
+
+            <div class="nav-group">
+                <button class="nav-item nav-toggle" aria-expanded="false">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A11 11 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
+                    <span class="nav-label">ระบบตรวจวัดน้ำท่วมในท่อ</span>
+                    <span class="nav-caret">⌄</span>
+                </button>
+                <div class="nav-children" hidden>
+                    <a class="nav-item nav-child" href="#"><span class="nav-icon-sm">📈</span><span class="nav-label">กราฟระดับน้ำ</span><span class="nav-ext">↗</span></a>
+                    <a class="nav-item nav-child" href="#"><span class="nav-icon-sm">📊</span><span class="nav-label">กราฟอัตราการไหล</span><span class="nav-ext">↗</span></a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <button class="nav-item nav-toggle" aria-expanded="false">
+                    <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+                    <span class="nav-label">ระบบตรวจวัดน้ำท่วมถนน</span>
+                    <span class="nav-caret">⌄</span>
+                </button>
+                <div class="nav-children" hidden>
+                    <a class="nav-item nav-child" href="#"><span class="nav-icon-sm">📈</span><span class="nav-label">กราฟระดับน้ำ</span><span class="nav-ext">↗</span></a>
+                    <a class="nav-item nav-child" href="#"><span class="nav-icon-sm">📊</span><span class="nav-label">กราฟอัตราการไหล</span><span class="nav-ext">↗</span></a>
+                </div>
+            </div>
+
+            <a class="nav-item" href="#">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span class="nav-label">สถานี</span>
+                <span class="nav-ext">↗</span>
+            </a>
+
+            <a class="nav-item" href="#">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+                <span class="nav-label">ป้ายแจ้งเตือนภัยน้ำท่วม</span>
+                <span class="nav-ext">↗</span>
+            </a>
+
+            <a class="nav-item active" href="#" aria-current="page">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2l2-7 4 14 4-10 2 5h6"/></svg></span>
+                <span class="nav-label">ระบบตรวจวัดการสั่นสะเทือน</span>
+                <span class="nav-ext">↗</span>
+            </a>
+        </nav>
+
+        <div class="nav-footer">
+            <a class="nav-item" href="#">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <span class="nav-label">ข้อมูลส่วนตัว</span>
+            </a>
+            <a class="nav-item logout" href="#">
+                <span class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+                <span class="nav-label">ออกจากระบบ</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ============ Main ============ -->
+    <main class="main">
+        <header class="topbar">
+            <div class="search">
+                <span class="search-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <input type="text" placeholder="ค้นหา" aria-label="ค้นหา">
+            </div>
+        </header>
+
+        <div class="title-row">
+            <div>
+                <h2 class="page-title">ระบบตรวจวัดการสั่นสะเทือน</h2>
+                <div class="chips">
+                    <span class="sensor-chip">
+                        <span class="sensor-chip-dot">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2l2-7 4 14 4-10 2 5h6"/></svg>
+                        </span>
+                        <span id="chip-name">VTall-S203L · โรงบำบัดน้ำเสียหนองใหญ่</span>
+                    </span>
+                </div>
+            </div>
+            <div id="overall-badge"></div>
+        </div>
+
+        <div class="status-line">
+            <span class="status-pill" id="conn-pill" title="คลิกเพื่อตั้งค่า MQTT broker">
+                <span class="dot"></span>
+                <span id="conn-text">กำลังเชื่อมต่อ MQTT…</span>
+            </span>
+            <span>อัปเดตล่าสุด: <b id="updated-at">—</b></span>
+            <span>Broker: <b id="broker-host">—</b></span>
+            <span>Sensor ID: <b id="sensor-id-display">—</b></span>
+            <span>Firmware: <b id="sensor-fw">—</b></span>
+        </div>
+
+        <!-- ============ Stat cards ============ -->
+        <div class="stat-grid">
+            <div class="card stat-card" id="card-vel">
+                <div class="stat-head"><span>ความเร็วการสั่น</span><span class="badge offline" id="badge-vel">—</span></div>
+                <div class="stat-big" id="vel-max">—<span class="stat-unit">มม./วินาที</span></div>
+                <div class="stat-sub">แกนสูงสุด (RMS) · เกณฑ์ ISO 10816-3</div>
+                <div class="axes">
+                    <div class="ax-cell x"><span class="ax-lbl">X</span><div class="ax-val" id="vel-x">—</div></div>
+                    <div class="ax-cell y"><span class="ax-lbl">Y</span><div class="ax-val" id="vel-y">—</div></div>
+                    <div class="ax-cell z"><span class="ax-lbl">Z</span><div class="ax-val" id="vel-z">—</div></div>
+                </div>
+            </div>
+
+            <div class="card stat-card" id="card-acc">
+                <div class="stat-head"><span>ความเร่ง</span><span class="badge offline" id="badge-acc">—</span></div>
+                <div class="stat-big" id="acc-max">—<span class="stat-unit">ม./วินาที²</span></div>
+                <div class="stat-sub">แกนสูงสุด (RMS)</div>
+                <div class="axes">
+                    <div class="ax-cell x"><span class="ax-lbl">X</span><div class="ax-val" id="acc-x">—</div></div>
+                    <div class="ax-cell y"><span class="ax-lbl">Y</span><div class="ax-val" id="acc-y">—</div></div>
+                    <div class="ax-cell z"><span class="ax-lbl">Z</span><div class="ax-val" id="acc-z">—</div></div>
+                </div>
+            </div>
+
+            <div class="card stat-card" id="card-disp">
+                <div class="stat-head"><span>การกระจัด (Peak-to-Peak)</span><span class="badge offline" id="badge-disp">—</span></div>
+                <div class="stat-big" id="disp-max">—<span class="stat-unit">µm</span></div>
+                <div class="stat-sub">แกนสูงสุด</div>
+                <div class="axes">
+                    <div class="ax-cell x"><span class="ax-lbl">X</span><div class="ax-val" id="disp-x">—</div></div>
+                    <div class="ax-cell y"><span class="ax-lbl">Y</span><div class="ax-val" id="disp-y">—</div></div>
+                    <div class="ax-cell z"><span class="ax-lbl">Z</span><div class="ax-val" id="disp-z">—</div></div>
+                </div>
+            </div>
+
+            <div class="card stat-card" id="card-temp">
+                <div class="stat-head"><span>อุณหภูมิเซนเซอร์</span><span class="badge offline" id="badge-temp">—</span></div>
+                <div class="stat-big" id="temp-val">—<span class="stat-unit">°C</span></div>
+                <div class="stat-sub">ภายในตัวเซนเซอร์</div>
+                <div class="axes" style="grid-template-columns: 1fr 1fr;">
+                    <div class="ax-cell" style="border-top-color: var(--vibration);"><span class="ax-lbl">Peak Vel.</span><div class="ax-val" id="peak-vel">—</div></div>
+                    <div class="ax-cell" style="border-top-color: var(--vibration);"><span class="ax-lbl">Peak Acc.</span><div class="ax-val" id="peak-acc">—</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ Chart ============ -->
+        <section class="section">
+            <div class="section-head">
+                <h3 class="section-title">กราฟแนวโน้มความเร็วการสั่น (2 นาทีย้อนหลัง)</h3>
+                <div class="legend-axes">
+                    <span class="item"><span class="swatch x"></span>แกน X</span>
+                    <span class="item"><span class="swatch y"></span>แกน Y</span>
+                    <span class="item"><span class="swatch z"></span>แกน Z</span>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <svg id="chart" class="chart" viewBox="0 0 1200 280" preserveAspectRatio="none"></svg>
+            </div>
+        </section>
+
+        <!-- ============ Faults ============ -->
+        <section class="section">
+            <h3 class="section-title" style="margin-bottom:10px;">การวินิจฉัยและคำเตือน</h3>
+            <div class="faults-grid">
+                <div class="card fault-card">
+                    <div class="fault-head"><span>Fault Diagnosis</span></div>
+                    <div class="fault-axis"><span class="axis-tag x">X</span><b>แกน X</b></div>
+                    <ul class="fault-list" id="fault-x"></ul>
+                    <div class="fault-axis"><span class="axis-tag y">Y</span><b>แกน Y</b></div>
+                    <ul class="fault-list" id="fault-y"></ul>
+                    <div class="fault-axis"><span class="axis-tag z">Z</span><b>แกน Z</b></div>
+                    <ul class="fault-list" id="fault-z"></ul>
+                </div>
+
+                <div class="card fault-card">
+                    <div class="fault-head"><span>Temp / Vibration Warning</span></div>
+                    <ul class="fault-list" id="warn-temp"></ul>
+                </div>
+
+                <div class="card fault-card">
+                    <div class="fault-head"><span>Per-Axis Warning</span></div>
+                    <div class="fault-axis"><span class="axis-tag x">X</span><b>แกน X</b></div>
+                    <ul class="fault-list" id="warn-x"></ul>
+                    <div class="fault-axis"><span class="axis-tag y">Y</span><b>แกน Y</b></div>
+                    <ul class="fault-list" id="warn-y"></ul>
+                    <div class="fault-axis"><span class="axis-tag z">Z</span><b>แกน Z</b></div>
+                    <ul class="fault-list" id="warn-z"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="sensor-info">
+            <div><div class="label">Sensor model</div><div class="value">VTall-S203L</div></div>
+            <div><div class="label">Bus</div><div class="value">Modbus RTU → MQTT</div></div>
+            <div><div class="label">Velocity kurtosis (max)</div><div class="value" id="kurt-vel">—</div></div>
+            <div><div class="label">Acc. kurtosis (max)</div><div class="value" id="kurt-acc">—</div></div>
+            <div><div class="label">Serial #</div><div class="value" id="sensor-sn">—</div></div>
+            <div><div class="label">MQTT topic</div><div class="value" id="topic-display" style="font-size:11px;word-break:break-all;">—</div></div>
+        </section>
+    </main>
+</div>
+
+<!-- Right rail (decorative, plus gear for MQTT settings) -->
+<div class="rail">
+    <button class="rail-btn" title="ประเภทแผนที่"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></button>
+    <button class="rail-btn" title="ข้อมูลล่าสุดวันนี้"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/></svg></button>
+    <button class="rail-btn" title="สัญลักษณ์บนแผนที่"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button>
+    <button class="rail-btn" title="พยากรณ์อากาศ 7 วัน"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 13v8M8 13v8M12 15v8M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/></svg></button>
+    <button class="rail-btn" id="btn-settings" title="ตั้งค่า MQTT broker"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+</div>
+
+<!-- Settings modal -->
+<div class="modal-backdrop" id="settings-modal" hidden>
+    <div class="modal">
+        <div class="modal-head">
+            <h3>ตั้งค่า MQTT broker</h3>
+            <button class="modal-close" id="settings-close">×</button>
+        </div>
+        <div class="modal-body">
+            <label class="field">
+                <span>Broker URL (WebSocket)</span>
+                <input type="text" id="cfg-broker" placeholder="wss://broker.hivemq.com:8884/mqtt">
+                <small>ใช้ <code>wss://</code> สำหรับ secure, <code>ws://</code> สำหรับ unsecured</small>
+            </label>
+            <label class="field">
+                <span>Sensor ID</span>
+                <input type="text" id="cfg-sensor" placeholder="wwtp-nong-yai">
+                <small>Topic จะเป็น <code>pattaya/sensors/&lt;id&gt;/reading</code></small>
+            </label>
+            <div class="field-row">
+                <label class="field">
+                    <span>Username (ถ้ามี)</span>
+                    <input type="text" id="cfg-username" autocomplete="username">
+                </label>
+                <label class="field">
+                    <span>Password (ถ้ามี)</span>
+                    <input type="password" id="cfg-password" autocomplete="current-password">
+                </label>
+            </div>
+            <div class="brokers-quick">
+                <span>Quick presets:</span>
+                <button data-preset="hivemq">HiveMQ public</button>
+                <button data-preset="mosquitto">test.mosquitto.org</button>
+                <button data-preset="local">localhost:9001</button>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn-secondary" id="settings-cancel">ยกเลิก</button>
+            <button class="btn-primary" id="settings-save">บันทึก & เชื่อมต่อใหม่</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
