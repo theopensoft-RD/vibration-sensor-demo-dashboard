@@ -63,7 +63,7 @@ body {
     transition: width 0.18s ease;
 }
 .brand { text-align: center; padding: 8px 4px 18px; }
-.seal { display: inline-block; margin-bottom: 8px; }
+.seal { display: inline-block; margin-bottom: 8px; width: 80px; height: 80px; object-fit: contain; }
 .brand-name { font-size: 20px; font-weight: 700; margin: 0; color: var(--c-text); }
 .brand-sub { font-size: 11px; color: var(--c-muted); margin-top: 2px; }
 
